@@ -1,0 +1,75 @@
+# ============================================
+# STM32CubeIDE / Eclipse
+# ============================================
+
+# Eclipse workspace/project settings
+.settings/
+
+# Launch configurations
+*.launch
+
+# Eclipse-generated metadata
+.metadata/
+
+# ============================================
+# Build output
+# ============================================
+
+Debug/
+Release/
+
+# Common build directories
+build/
+Build/
+out/
+
+# Compiled objects / binaries
+*.o
+*.obj
+*.a
+*.elf
+*.hex
+*.bin
+*.map
+*.list
+*.lst
+*.d
+*.su
+
+# ============================================
+# Generated / temporary files
+# ============================================
+
+*.tmp
+*.bak
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ============================================
+# IDE-specific local files
+# ============================================
+
+.vscode/
+.idea/
+
+# ============================================
+# Keep STM32CubeIDE project configuration
+# ============================================
+
+!.project
+!.cproject
+
+# ============================================
+# Keep source and linker files
+# ============================================
+
+!Inc/
+!Src/
+!Startup/
+!drivers/
+!Documents/
+
+!*.ld
