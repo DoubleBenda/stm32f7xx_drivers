@@ -104,6 +104,9 @@
 #define USART6_BASEADDR (APB2PERIPH_BASE + 0x1400)
 #define SYSCFG_BASEADDR (APB2PERIPH_BASE + 0x3800)
 
+/*
+* Definizione defli indirizzi dei registri della periferica SPI
+*/
 #define SPI_CONTROL_REGISTER_1 (SPI1_BASEADDR + 0x00)
 #define SPI_CONTROL_REGISTER_2 (SPI1_BASEADDR + 0x04)
 #define SPI_STATUS_REGISTER (SPI1_BASEADDR + 0x08)
