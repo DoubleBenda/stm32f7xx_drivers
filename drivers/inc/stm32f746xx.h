@@ -182,12 +182,12 @@ typedef struct
  */
 typedef struct
 {
-	volatile uint32_t IMR; 		/* Interrupt Mask Register*/
-	volatile uint32_t EMR; 		/* Interrupt Mask Register*/
-	volatile uint32_t RTSR; 	/* Interrupt Mask Register*/
-	volatile uint32_t FTSR; 	/* Interrupt Mask Register*/
-	volatile uint32_t SWIER; 	/* Interrupt Mask Register*/
-	volatile uint32_t PR; 		/* Interrupt Mask Register*/
+	volatile uint32_t IMR; 		/* Interrupt Mask Register 1 */
+	volatile uint32_t EMR;	 		/* Event Mask Register 1 */
+	volatile uint32_t RTSR; 		/* Rising Trigger Selection Register 1 */
+	volatile uint32_t FTSR;		 	/* Falling Trigger Selection Register 1 */
+	volatile uint32_t SWIER; 		/* Software Interrupt Event Register 1 */
+	volatile uint32_t PR; 			/* Pending Register 1 */
 }EXTI_RegDef_t;
 
 /*
