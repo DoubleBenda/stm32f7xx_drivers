@@ -53,11 +53,6 @@ int main(void)
 		{
 			GPIO_WriteToOutputPin(GPIO_Led.pGPIOx,GPIO_Led.GPIO_PinConfig.GPIO_PinNumber,LOW);
 		}
-		/*if(GPIO_ReadFromInputPin(GPIO_Btn.pGPIOx, GPIO_Btn.GPIO_PinConfig.GPIO_PinNumber) == BUTTON_PRESSED)
-		{
-			delay(); // introduce a little delay to debounce the button
-			GPIO_ToggleOutputPin(GPIO_Led.pGPIOx,GPIO_Led.GPIO_PinConfig.GPIO_PinNumber);
-		}*/
 	}
 	return 0;
 }
