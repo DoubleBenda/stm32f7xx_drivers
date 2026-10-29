@@ -26,11 +26,12 @@ int main(void)
 	GPIO_Btn.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_NO_11;	// il bottone è connesso al pin 11 della porta GPIO I
 	GPIO_Btn.GPIO_PinConfig.GPIO_PinMode = GPIO_MODE_IT_RT;		// La modalita è "Input"
 	GPIO_Btn.GPIO_PinConfig.GPIO_PinSpeed = GPIO_SPEED_FAST;
+	GPIO_Led.GPIO_PinConfig.GPIO_PinOPType = GPIO_OP_TYPE_PP;
 	GPIO_Btn.GPIO_PinConfig.GPIO_PinPuPdControl = GPIO_NO_PUPD;	// non abbiamo bisogno delle resistenze di Pull Up o Pull Down
 
 	// Abilitazione dei clock delle periferiche
 	GPIO_PeripheralClockControl(GPIO_Led.pGPIOx, ENABLE);
-	GPIO_PeripheralClockControl(GPIO_Btn.pGPIOx, ENABLE); // dato che i pin che sto utilizzando sono connessi alla stessa porta GPIO basta abilitare il clock una sola volta
+	//GPIO_PeripheralClockControl(GPIO_Btn.pGPIOx, ENABLE); // dato che i pin che sto utilizzando sono connessi alla stessa porta GPIO basta abilitare il clock una sola volta
 
 	// Inizializzazione delle Periferiche utilizzate
 	GPIO_Init(&GPIO_Led);
@@ -48,9 +49,15 @@ int main(void)
 
 void EXTI15_10_IRQHandler(void)
 {
-	GPIO_IRQHandling(GPIO_Led.GPIO_PinConfig.GPIO_PinNumber);
+    uint32_t mask = 1U << GPIO_Btn.GPIO_PinConfig.GPIO_PinNumber;
 
-	GPIO_ToggleOutputPin(	GPIO_Led.pGPIOx,
-							GPIO_Led.GPIO_PinConfig.GPIO_PinNumber
-							);
+    if ((EXTI->PR & mask) != 0U)
+    {
+        GPIO_IRQHandling(GPIO_Btn.GPIO_PinConfig.GPIO_PinNumber);
+
+        GPIO_ToggleOutputPin(
+            GPIO_Led.pGPIOx,
+            GPIO_Led.GPIO_PinConfig.GPIO_PinNumber
+        );
+    }
 }
