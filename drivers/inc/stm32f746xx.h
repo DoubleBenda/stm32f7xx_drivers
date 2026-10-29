@@ -351,13 +351,13 @@ typedef struct
 /*
  *	 IRQ (Interrupt Request) Numbers of STM32F746x MCU
  */
-#define IRQ_NO_EXTI0			 6
-#define IRQ_NO_EXTI1			 7
-#define IRQ_NO_EXTI2			 8
-#define IRQ_NO_EXTI3			 9
-#define IRQ_NO_EXTI4			10
-#define IRQ_NO_EXTI9_5			30
-#define IRQ_NO_EXTI15_10		47
+#define IRQ_NO_EXTI0			 6U
+#define IRQ_NO_EXTI1			 7U
+#define IRQ_NO_EXTI2			 8U
+#define IRQ_NO_EXTI3			 9U
+#define IRQ_NO_EXTI4			10U
+#define IRQ_NO_EXTI9_5    		23U
+#define IRQ_NO_EXTI15_10  		40U
 
 /*
  * Macros for every possible Interrupt priority
