@@ -7,5 +7,5 @@
 ../drivers/src/stm32f746_gpio_driver.c:225:6:GPIO_WriteToOutputPort	16	static
 ../drivers/src/stm32f746_gpio_driver.c:238:6:GPIO_ToggleOutputPin	16	static
 ../drivers/src/stm32f746_gpio_driver.c:253:6:GPIO_IRQInterruptConfig	16	static
-../drivers/src/stm32f746_gpio_driver.c:300:6:GPIO_IRQPriorityConfig	24	static
-../drivers/src/stm32f746_gpio_driver.c:318:6:GPIO_IRQHandling	16	static
+../drivers/src/stm32f746_gpio_driver.c:300:6:GPIO_IRQPriorityConfig	32	static
+../drivers/src/stm32f746_gpio_driver.c:319:6:GPIO_IRQHandling	24	static

@@ -8,4 +8,4 @@
 ../drivers/src/stm32f746_gpio_driver.c:238:6:GPIO_ToggleOutputPin	1
 ../drivers/src/stm32f746_gpio_driver.c:253:6:GPIO_IRQInterruptConfig	12
 ../drivers/src/stm32f746_gpio_driver.c:300:6:GPIO_IRQPriorityConfig	1
-../drivers/src/stm32f746_gpio_driver.c:318:6:GPIO_IRQHandling	1
+../drivers/src/stm32f746_gpio_driver.c:319:6:GPIO_IRQHandling	2
