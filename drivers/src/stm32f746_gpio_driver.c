@@ -69,7 +69,7 @@ void GPIO_Init(GPIO_Handle_t *pGPIOHandle)
 	{
 		// non interrupt modes
 		temp = (pGPIOHandle->GPIO_PinConfig.GPIO_PinMode << (2 * pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber));
-		pGPIOHandle->pGPIOx->MODER &= ~( 0x3 <<  pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber); // clearing
+		pGPIOHandle->pGPIOx->MODER &= ~( 0x3 <<  (2U * pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber)); // clearing
 		pGPIOHandle->pGPIOx->MODER |= temp; // setting
 	}
 	else
@@ -109,14 +109,14 @@ void GPIO_Init(GPIO_Handle_t *pGPIOHandle)
 
 	// 2. configure the speed
 	temp = (pGPIOHandle->GPIO_PinConfig.GPIO_PinSpeed << (2* pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber));
-	pGPIOHandle->pGPIOx->OSPEEDR &= ~( 0x3 <<  pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber); // clearing
+	pGPIOHandle->pGPIOx->OSPEEDR &= ~( 0x3 <<  (2U * pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber)); // clearing
 	pGPIOHandle->pGPIOx->OSPEEDR |= temp; // setting
 
 	temp = 0;
 
 	// 3. configure the pull up / pull down settings
 	temp = (pGPIOHandle->GPIO_PinConfig.GPIO_PinPuPdControl << (2* pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber));
-	pGPIOHandle->pGPIOx->PUPDR &= ~(0x3 <<  pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber); // clearing
+	pGPIOHandle->pGPIOx->PUPDR &= ~(0x3 <<  (2U * pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber)); // clearing
 	pGPIOHandle->pGPIOx->PUPDR |= temp; // setting
 	temp = 0;
 
@@ -129,8 +129,8 @@ void GPIO_Init(GPIO_Handle_t *pGPIOHandle)
 	// 5. configure the alternate functionality
 	if(pGPIOHandle->GPIO_PinConfig.GPIO_PinMode == GPIO_MODE_ALTFN)
 	{
-		uint8_t AFRIndex= pGPIOHandle->GPIO_PinConfig.GPIO_PinMode / 8;
-		uint8_t position = pGPIOHandle->GPIO_PinConfig.GPIO_PinMode % 8;
+		uint8_t AFRIndex= pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber / 8;
+		uint8_t position = pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber % 8;
 
 		pGPIOHandle->pGPIOx->AFR[AFRIndex] &= ~( 0xF << (4 * position)); // clearing
 		pGPIOHandle->pGPIOx->AFR[AFRIndex] |= pGPIOHandle->GPIO_PinConfig.GPIO_PinAltFunMode << (4 * position); // setting
@@ -299,13 +299,14 @@ void GPIO_IRQInterruptConfig(uint8_t IRQNumber, uint8_t EnableOrDisable) // We c
  */
 void GPIO_IRQPriorityConfig(uint8_t IRQNumber, uint8_t IRQPriority)
 {
-	// 1. first let's find out the ipr register
-	uint8_t iprx = IRQNumber / 4;
-	uint8_t iprx_section = IRQNumber % 4;
+    uint32_t index = IRQNumber / 4U;
+    uint32_t byteShift = 8U * (IRQNumber % 4U);
+    uint32_t priorityShift =
+        byteShift + (8U - NO_PR_BITS_IMPLEMENTED);
 
-	uint8_t shift_amount = (8 * iprx_section) + (8 - NO_PR_BITS_IMPLEMENTED);
-
-	*( NVIC_PR_BASE_ADDR + iprx * 4 ) |= ( IRQPriority << shift_amount );
+    NVIC_PR_BASE_ADDR[index] =
+        (NVIC_PR_BASE_ADDR[index] & ~(0xFFU << byteShift)) |
+        (((uint32_t)IRQPriority & 0x0FU) << priorityShift);
 }
 
 /*********************************************************************
@@ -317,10 +318,10 @@ void GPIO_IRQPriorityConfig(uint8_t IRQNumber, uint8_t IRQPriority)
  */
 void GPIO_IRQHandling(uint8_t PinNumber)
 {
-	//clear the EXTI PR register corresponding to the pin number
-	if(EXTI->PR && (1 << PinNumber))
-	{
-		//clear
-		EXTI->PR |= (1 << PinNumber);
-	}
+    uint32_t mask = 1U << PinNumber;
+
+    if ((EXTI->PR & mask) != 0U)
+    {
+        EXTI->PR = mask;
+    }
 }
