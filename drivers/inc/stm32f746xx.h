@@ -154,22 +154,23 @@ typedef struct
 	volatile uint32_t AHB1ENR;			// offset : 0X30
 	volatile uint32_t AHB2ENR;			// offset : 0X34
 	volatile uint32_t AHB3ENR;  		// offset : 0X38
+	volatile uint32_t RESERVED_3;  		// offset : 0X3C
 	volatile uint32_t APB1ENR;			// offset : 0x40
 	volatile uint32_t APB2ENR;			// offset : 0x44
-	volatile uint32_t RESERVED_3;		// offset : 0x48
-	volatile uint32_t RESERVED_4;		// offset : 0x4C
+	volatile uint32_t RESERVED_4;		// offset : 0x48
+	volatile uint32_t RESERVED_5;		// offset : 0x4C
 	volatile uint32_t AHB1LPENR;		// offset : 0x50
 	volatile uint32_t AHB2LPENR;		// offset : 0x54
 	volatile uint32_t AHB3LPENR;		// offset : 0x58
-	volatile uint32_t RESERVED_5;		// offset : 0x5C
+	volatile uint32_t RESERVED_6;		// offset : 0x5C
 	volatile uint32_t APB1LPENR;		// offset : 0x60
 	volatile uint32_t APB2LPENR;		// offset : 0x64
-	volatile uint32_t RESERVED_6;		// offset : 0x68
-	volatile uint32_t RESERVED_7;		// offset : 0x6C
+	volatile uint32_t RESERVED_7;		// offset : 0x68
+	volatile uint32_t RESERVED_8;		// offset : 0x6C
 	volatile uint32_t BDCR;				// offset : 0x70
 	volatile uint32_t CSR;				// offset : 0x74
-	volatile uint32_t RESERVED_8;		// offset : 0x78
-	volatile uint32_t RESERVED_9;		// offset : 0x7C
+	volatile uint32_t RESERVED_9;		// offset : 0x78
+	volatile uint32_t RESERVED_10;		// offset : 0x7C
 	volatile uint32_t SSCGR;			// offset : 0x80
 	volatile uint32_t PLLI2SCFGR;		// offset : 0x84
 	volatile uint32_t PLLSAICFGR;		// offset : 0x88
