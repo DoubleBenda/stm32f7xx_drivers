@@ -99,10 +99,15 @@
 * Definizione degli indirizzi base delle periferiche connesse al bus APB2
 */
 #define EXTI_BASEADDR (APB2PERIPH_BASE + 0x3C00)
+
 #define SPI1_BASEADDR (APB2PERIPH_BASE + 0x3000)
+#define SPI4_BASEADDR (APB2PERIPH_BASE + 0x3400)
+#define SPI5_BASEADDR (APB2PERIPH_BASE + 0x5000)
+#define SPI6_BASEADDR (APB2PERIPH_BASE + 0x5400)
 #define USART1_BASEADDR (APB2PERIPH_BASE + 0x1000)
 #define USART6_BASEADDR (APB2PERIPH_BASE + 0x1400)
 #define SYSCFG_BASEADDR (APB2PERIPH_BASE + 0x3800)
+
 
 /*
 * Definizione defli indirizzi dei registri della periferica SPI
@@ -352,6 +357,7 @@ typedef struct
 #define GPIOK_REG_RESET()			do{(RCC->AHB1RSTR |= (1 << 10));  (RCC->AHB1RSTR &= ~(1 << 10));} while(0)
 
 #include "stm32f746_gpio_driver.h"
+#include "stm32f746_spi_driver.h"
 
 #define GPIO_BASEADDR_TO_CODE(x)    (x == GPIOA) ?  0 : \
 									(x == GPIOB) ?  1 : \
