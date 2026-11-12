@@ -13,7 +13,7 @@
 #include "stm32f746xx.h"
 
 /*
-* This is the Configuration Structure for a GPIO Pin
+* Configuration Structure for a GPIO Pin
 */
 typedef struct
 {
