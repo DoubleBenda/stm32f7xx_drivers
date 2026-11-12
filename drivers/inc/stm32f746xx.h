@@ -203,6 +203,23 @@ typedef struct
 	volatile uint32_t CMPCR;		/* Compensation Cell Control Register			Offset : 0x20 			*/
 }SYSCFG_RegDef_t;
 
+/*
+ * peripheral register definition structure for SPI
+ */
+typedef struct
+{
+	volatile uint32_t SPIx_CR1; 	/* Control Register 1 			Offset : 0x00 */
+	volatile uint32_t SPIx_CR2; 	/* Control Register 2 			Offset : 0x04 */
+	volatile uint32_t SPIx_SR;	 	/* Status Register  			Offset : 0x08 */
+	volatile uint32_t SPIx_DR;	 	/* Data Register  				Offset : 0x0C */
+	volatile uint32_t SPIx_CRCPR; 	/* CRC Polynomial Register  	Offset : 0x10 */
+	volatile uint32_t SPIx_RXCRCR; 	/* Rx CRC Register  			Offset : 0x14 */
+	volatile uint32_t SPIx_TXCRCR; 	/* Tx CRC Register  			Offset : 0x18 */
+	volatile uint32_t SPIx_I2SCFGR; /* I2S Configuration Register   Offset : 0x1C */
+	volatile uint32_t SPIx_I2SPR;   /* I2S Prescaler Register   	Offset : 0x20 */
+}SPI_RegDef_t;
+
+
 // Peripheral Definition Macros
 #define GPIOA ((GPIO_RegDef_t*)GPIOA_BASEADDR)
 #define GPIOB ((GPIO_RegDef_t*)GPIOB_BASEADDR)
