@@ -122,6 +122,13 @@
 #define SPI_I2S_CONFIGURATION_REGISTER (SPI1_BASEADDR + 0x1C)
 #define SPI_I2S_PRESCALER_REGISTER (SPI1_BASEADDR + 0x20)
 
+#define SPI1 ((SPI_RegDef_t*)SPI1_BASEADDR)
+#define SPI2 ((SPI_RegDef_t*)SPI2_BASEADDR)
+#define SPI3 ((SPI_RegDef_t*)SPI3_BASEADDR)
+#define SPI4 ((SPI_RegDef_t*)SPI4_BASEADDR)
+#define SPI5 ((SPI_RegDef_t*)SPI5_BASEADDR)
+#define SPI6 ((SPI_RegDef_t*)SPI6_BASEADDR)
+
 /*
  * peripheral register definition structure for GPIO
  */
