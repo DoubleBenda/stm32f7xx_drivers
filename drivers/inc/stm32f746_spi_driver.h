@@ -33,6 +33,56 @@ typedef struct
 	SPI_Config_t SPIConfig;
 }SPI_Handle_t;
 
+/*
+ * @SPI Device Mode
+ * */
+#define SPI_DEVICE_MODE_MASTER 	1
+#define SPI_DEVICE_MODE_SLAVE 	0
+
+/*
+ * @SPI Bus Config
+ * */
+#define SPI_BUS_CONFIG_FULLDUPLEX		1
+#define SPI_BUS_CONFIG_HALFDUPLEX		2
+#define SPI_BUS_CONFIG_SIMPLEX_TXONLY	3
+#define SPI_BUS_CONFIG_SIMPLEX_RXONLY	4
+
+/*
+ * @SPI Clock Speed
+ * */
+#define SPI_SCLK_SPEED_DIV_2			0
+#define SPI_SCLK_SPEED_DIV_4			1
+#define SPI_SCLK_SPEED_DIV_8			2
+#define SPI_SCLK_SPEED_DIV_16			3
+#define SPI_SCLK_SPEED_DIV_32			4
+#define SPI_SCLK_SPEED_DIV_64			5
+#define SPI_SCLK_SPEED_DIV_128			6
+#define SPI_SCLK_SPEED_DIV_256			7
+
+/*
+ * @SPI Data Frame Format
+ * */
+#define SPI_DFF_8BITS 	0
+#define SPI_DFF_16BITS	1
+
+/*
+ * @SPI Clock Polarity
+ * */
+#define SPI_CPOL_HIGH 	1
+#define SPI_CPOL_LOW 	0
+
+/*
+ * @SPI Clock Phase
+ * */
+#define SPI_CPHA_HIGH 	1
+#define SPI_CPHA_LOW 	0
+
+/*
+ * @SPI Slave Select Management
+ * */
+#define SPI_SSM_HW 		1
+#define SPI_SSM_SW		0
+
 /***************************************************************************************
 * 								API functions Definitions
 ****************************************************************************************/
