@@ -103,10 +103,22 @@ typedef struct
 */
 void SPI_PeripheralClockControl(SPI_RegDef_t *pSPIx, uint8_t EnableOrDisable);
 
-/*
-* Init and De-Init
-*/
+/*********************************************************************
+ * @fn      		  - SPI_DeInit
+ *
+ * @brief             - This function Initializes the given SPI peripheral
+ *
+ * @param[in]         - base address of the spi peripheral
+ */
 void SPI_Init(SPI_Handle_t *pSPIHandle);
+
+/*********************************************************************
+ * @fn      		  - SPI_DeInit
+ *
+ * @brief             - This function resets all the registers of the given SPI peripheral
+ *
+ * @param[in]         - base address of the spi peripheral
+ */
 void SPI_DeInit(SPI_RegDef_t *pSPIx);
 
 /*
