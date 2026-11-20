@@ -140,8 +140,7 @@ typedef struct
 	volatile uint32_t PUPDR;     // offset : 0x0C
 	volatile uint32_t IDR;       // offset : 0x10
 	volatile uint32_t ODR;       // offset : 0x14
-	volatile uint32_t BSRRL;     // offset : 0x18
-	volatile uint32_t BSRRH;     // offset : 0x1A
+	volatile uint32_t BSRR;	     // offset : 0x18
 	volatile uint32_t LCKR;      // offset : 0x1C
 	volatile uint32_t AFR[2];    // offset : 0x20 - 0x24
 }GPIO_RegDef_t;
