@@ -80,8 +80,8 @@ typedef struct
 /*
  * @SPI Slave Select Management
  * */
-#define SPI_SSM_HW 		1
-#define SPI_SSM_SW		0
+#define SPI_SSM_EN 		1
+#define SPI_SSM_DI		0
 
 /***************************************************************************************
 * 								API functions Definitions
