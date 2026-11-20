@@ -60,10 +60,21 @@ typedef struct
 #define SPI_SCLK_SPEED_DIV_256			7
 
 /*
- * @SPI Data Frame Format
+ * @SPI Data Size (Data Frame Format)
  * */
-#define SPI_DFF_8BITS 	0
-#define SPI_DFF_16BITS	1
+#define SPI_DFF_4BITS 			3
+#define SPI_DFF_5BITS 			4
+#define SPI_DFF_6BITS 			5
+#define SPI_DFF_7BITS 			6
+#define SPI_DFF_8BITS 			7
+#define SPI_DFF_9BITS 			8
+#define SPI_DFF_10BITS 			9
+#define SPI_DFF_11BITS 			10
+#define SPI_DFF_12BITS 			11
+#define SPI_DFF_13BITS 			12
+#define SPI_DFF_14BITS 			13
+#define SPI_DFF_15BITS 			14
+#define SPI_DFF_16BITS 			15
 
 /*
  * @SPI Clock Polarity
