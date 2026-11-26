@@ -15,13 +15,13 @@
  * */
 typedef struct
 {
-	uint8_t SPI_DeviceMode;
-	uint8_t SPI_BusConfig;
-	uint8_t SPI_SclkSpeed;
-	uint8_t SPI_DFF;
-	uint8_t SPI_CPOL;
-	uint8_t SPI_CPHA;
-	uint8_t SPI_SSM;
+	uint8_t DeviceMode;
+	uint8_t BusConfig;
+	uint8_t SclkSpeed;
+	uint8_t DFF;
+	uint8_t CPOL;
+	uint8_t CPHA;
+	uint8_t SSM;
 }SPI_Config_t;
 
 /*
@@ -93,6 +93,22 @@ typedef struct
  * */
 #define SPI_SSM_EN 		1
 #define SPI_SSM_DI		0
+
+/*
+ * SPI related Flag Definitions
+ * */
+#define SPI_RXNE_FLAG 			( 	1U << SPI_SR_RXNE 	)
+#define SPI_TXE_FLAG 			( 	1U << SPI_SR_TXE 	)
+#define SPI_CHSIDE_FLAG			( 	1U << SPI_SR_CHSIDE )
+#define SPI_UDR_FLAG			( 	1U << SPI_SR_UDR 	)
+#define SPI_CRCERR_FLAG			( 	1U << SPI_SR_CRCERR	)
+#define SPI_MODF_FLAG			(	1U << SPI_SR_MODF 	)
+#define SPI_OVR_FLAG			( 	1U << SPI_SR_OVR 	)
+#define SPI_BSY_FLAG			( 	1U << SPI_SR_BSY 	)
+#define SPI_FRE_FLAG			( 	1U << SPI_SR_FRE 	)
+#define SPI_FRLVL_FLAG			( 	1U << SPI_SR_FRLVL 	)
+#define SPI_FTLVL_FLAG			( 	1U << SPI_SR_FTLVL 	)
+
 
 /***************************************************************************************
 * 								API functions Definitions

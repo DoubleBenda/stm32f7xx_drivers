@@ -45,6 +45,9 @@
 #define LOW DISABLE
 #define BUTTON_PRESSED HIGH
 #define BUTTON_NOT_PRESSED LOW
+#define FLAG_SET SET
+#define FLAG_RESET RESET
+
 
 /*
 * Definizione degli indirizzi base delle porzioni di memoria
@@ -219,15 +222,15 @@ typedef struct
  */
 typedef struct
 {
-	volatile uint32_t SPIx_CR1; 	/* Control Register 1 			Offset : 0x00 */
-	volatile uint32_t SPIx_CR2; 	/* Control Register 2 			Offset : 0x04 */
-	volatile uint32_t SPIx_SR;	 	/* Status Register  			Offset : 0x08 */
-	volatile uint32_t SPIx_DR;	 	/* Data Register  				Offset : 0x0C */
-	volatile uint32_t SPIx_CRCPR; 	/* CRC Polynomial Register  	Offset : 0x10 */
-	volatile uint32_t SPIx_RXCRCR; 	/* Rx CRC Register  			Offset : 0x14 */
-	volatile uint32_t SPIx_TXCRCR; 	/* Tx CRC Register  			Offset : 0x18 */
-	volatile uint32_t SPIx_I2SCFGR; /* I2S Configuration Register   Offset : 0x1C */
-	volatile uint32_t SPIx_I2SPR;   /* I2S Prescaler Register   	Offset : 0x20 */
+	volatile uint32_t CR1; 	/* Control Register 1 			Offset : 0x00 */
+	volatile uint32_t CR2; 	/* Control Register 2 			Offset : 0x04 */
+	volatile uint32_t SR;	 	/* Status Register  			Offset : 0x08 */
+	volatile uint32_t DR;	 	/* Data Register  				Offset : 0x0C */
+	volatile uint32_t CRCPR; 	/* CRC Polynomial Register  	Offset : 0x10 */
+	volatile uint32_t RXCRCR; 	/* Rx CRC Register  			Offset : 0x14 */
+	volatile uint32_t TXCRCR; 	/* Tx CRC Register  			Offset : 0x18 */
+	volatile uint32_t I2SCFGR; /* I2S Configuration Register   Offset : 0x1C */
+	volatile uint32_t I2SPR;   /* I2S Prescaler Register   	Offset : 0x20 */
 }SPI_RegDef_t;
 
 
@@ -361,6 +364,18 @@ typedef struct
 #define GPIOI_REG_RESET()			do{(RCC->AHB1RSTR |= (1 << 8));  (RCC->AHB1RSTR &= ~(1 << 8));} while(0)
 #define GPIOJ_REG_RESET()			do{(RCC->AHB1RSTR |= (1 << 9));  (RCC->AHB1RSTR &= ~(1 << 9));} while(0)
 #define GPIOK_REG_RESET()			do{(RCC->AHB1RSTR |= (1 << 10));  (RCC->AHB1RSTR &= ~(1 << 10));} while(0)
+
+
+/*
+ * Macros to Reset SPIx peripherals
+ *
+ * */
+#define SPI1_REG_RESET()			do{(RCC->APB2RSTR |= (1 << 12));  (RCC->APB2RSTR &= ~(1 << 12));} while(0)
+#define SPI2_REG_RESET()			do{(RCC->APB1RSTR |= (1 << 14));  (RCC->APB1RSTR &= ~(1 << 14));} while(0)
+#define SPI3_REG_RESET()			do{(RCC->APB1RSTR |= (1 << 15));  (RCC->APB1RSTR &= ~(1 << 15));} while(0)
+#define SPI4_REG_RESET()			do{(RCC->APB2RSTR |= (1 << 13));  (RCC->APB2RSTR &= ~(1 << 13));} while(0)
+#define SPI5_REG_RESET()			do{(RCC->APB2RSTR |= (1 << 20));  (RCC->APB2RSTR &= ~(1 << 20));} while(0)
+#define SPI6_REG_RESET()			do{(RCC->APB2RSTR |= (1 << 21));  (RCC->APB2RSTR &= ~(1 << 21));} while(0)
 
 #include "stm32f746_gpio_driver.h"
 #include "stm32f746_spi_driver.h"
