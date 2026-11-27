@@ -32,13 +32,39 @@ void SPI_PeripheralClockControl(SPI_RegDef_t *pSPIx, uint8_t EnableOrDisable)
 	}
 }
 
+void SPI_PeripheralControl(SPI_RegDef_t *pSPIx, uint8_t EnableOrDisable)
+{
+	if(EnableOrDisable == ENABLE)
+	{
+		pSPIx->CR1 |= (1U << SPI_CR1_SPE);
+	}
+	else
+	{
+		pSPIx->CR1 &= ~(1U << SPI_CR1_SPE);
+	}
+}
+
+void SPI_SSI_Config(SPI_RegDef_t *pSPIx, uint8_t EnableOrDisable)
+{
+	if(EnableOrDisable == ENABLE)
+	{
+		pSPIx->CR1 |= (1U << SPI_CR1_SSI);
+	}
+	else
+	{
+		pSPIx->CR1 &= ~(1U << SPI_CR1_SSI);
+	}
+}
+
 
 /*
 * Init and De-Init
 */
 void SPI_Init(SPI_Handle_t *pSPIHandle)
 {
-	// first lets configure the SPI_CR1 register
+	// Enable the Peripheral Clock
+	SPI_PeripheralClockControl(pSPIHandle->pSPIx, ENABLE);
+
 	uint32_t tempregCR1 = 0;
 	uint32_t tempregCR2 = 0;
 
@@ -136,11 +162,10 @@ void SPI_SendData(SPI_RegDef_t *pSPIx, uint8_t *pTxBuffer, uint32_t lenght)
 
 		if(dataSize > 7U)
 		{
-			data = (uint16_t)((uint16_t)pTxBuffer[1] << 8U)
-					| (uint16_t)pTxBuffer[0];
+			data = (uint16_t)(pTxBuffer[1] << 8U) | pTxBuffer[0];
 
-			//*((volatile uint16_t*)&pSPIx->DR) = data;
-			pSPIx->DR = data;
+			*((volatile uint16_t*)&pSPIx->DR) = data;
+			//pSPIx->DR = data;
 
 			pTxBuffer += 2;
 			lenght -= 2;

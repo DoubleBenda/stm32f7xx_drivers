@@ -119,6 +119,10 @@ typedef struct
 */
 void SPI_PeripheralClockControl(SPI_RegDef_t *pSPIx, uint8_t EnableOrDisable);
 
+void SPI_PeripheralControl(SPI_RegDef_t *pSPIx, uint8_t EnableOrDisable);
+
+void SPI_SSI_Config(SPI_RegDef_t *pSPIx, uint8_t EnableOrDisable);
+
 /*********************************************************************
  * @fn      		  - SPI_DeInit
  *
