@@ -35,6 +35,9 @@ out/
 *.lst
 *.d
 *.su
+*.xml
+*.mk
+*.cyclo
 
 # ============================================
 # Generated / temporary files
